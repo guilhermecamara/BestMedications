@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  db:
+    image: "mcr.microsoft.com/mssql/server:2017-latest"
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=1StrongPwdclear
+    hostname: 'sqlserver'
+    ports:
+      - '11433:1433'    
+    expose:
+      - 1433
+  presentation:
+    image: ${DOCKER_REGISTRY-}bestmedications
+    build:
+      context: .
+      dockerfile: src/Presentation/Dockerfile
+    depends_on:
+      - db
