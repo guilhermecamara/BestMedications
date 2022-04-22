@@ -1,1 +1,1 @@
-# BestBlogs
+# BestMedications
